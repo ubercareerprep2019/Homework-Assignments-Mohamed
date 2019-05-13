@@ -25,3 +25,35 @@ def isStringPermutation(s1, s2):
     # otherwise, return true
     return True
 
+# This function takes an array of integers and a target integer to which the array
+# elements must sum. It returns an array of all pairs of integers from the input
+# array whose sum equals the target.
+def pairsThatEqualSumArray(arr, target):
+    if len(arr) == 0:
+        return []
+    print arr
+    print ""
+    dictionary = dict()
+    pairs = []
+    # for e, i in enumerate(arr):
+    #     dictionary[i] = e
+
+    # for i in range(len(arr)):
+
+    banished = set()
+    for i in range(len(arr)):
+        if (target - arr[i]) in dictionary and dictionary[target - arr[i]] != i:
+            if dictionary[target - arr[i]] < i:
+                if arr[i] not in banished and target-arr[i] not in banished:
+                    pairs.append((arr[i], target - arr[i]))
+                    banished.add(arr[i])
+                    banished.add(target - arr[i])
+                    dictionary[arr[i]] = i
+
+                if arr[i] in dictionary: dictionary.pop(arr[i])
+                if arr[i] != target - arr[i]:
+                    if target - arr[i] in dictionary: dictionary.pop(target - arr[i])
+        else:
+            dictionary[arr[i]] = i
+
+    return pairs
