@@ -1,7 +1,7 @@
 # This function takes two strings and returns true if one string is a permutation of
 # the other, false otherwise.
 def isStringPermutation(s1, s2):
-    if not isinstance(s1, basestring) and isinstance(s2, basestring):
+    if not isinstance(s1, str) and isinstance(s2, str):
         print('Argument must be string type!')
         return False
 
@@ -28,31 +28,23 @@ def isStringPermutation(s1, s2):
 # This function takes an array of integers and a target integer to which the array
 # elements must sum. It returns an array of all pairs of integers from the input
 # array whose sum equals the target.
+# assume arr is an integer array and target is an integer
 def pairsThatEqualSumArray(arr, target):
     if len(arr) == 0:
         return []
-    print arr
-    print ""
+
     dictionary = dict()
     pairs = []
-    # for e, i in enumerate(arr):
-    #     dictionary[i] = e
 
-    # for i in range(len(arr)):
-
-    banished = set()
+    visited = set()
     for i in range(len(arr)):
         if (target - arr[i]) in dictionary and dictionary[target - arr[i]] != i:
             if dictionary[target - arr[i]] < i:
-                if arr[i] not in banished and target-arr[i] not in banished:
+                if arr[i] not in visited and target-arr[i] not in visited:
                     pairs.append((arr[i], target - arr[i]))
-                    banished.add(arr[i])
-                    banished.add(target - arr[i])
+                    visited.add(arr[i])
+                    visited.add(target - arr[i])
                     dictionary[arr[i]] = i
-
-                if arr[i] in dictionary: dictionary.pop(arr[i])
-                if arr[i] != target - arr[i]:
-                    if target - arr[i] in dictionary: dictionary.pop(target - arr[i])
         else:
             dictionary[arr[i]] = i
 

@@ -27,7 +27,7 @@ def testIsStringPermutation():
     isStringPermutation("", "daw")  # strings of different size
     isStringPermutation([1, 2, 3], "daw")  # input is not string
     # test random permuted strings
-    numberOfTests = 10000
+    numberOfTests = 1000
     for i in range(numberOfTests):
         randomSize = random.randint(1, 1000)
         input1 = randomInput(randomSize)
@@ -50,10 +50,12 @@ def testIsStringPermutation():
 
 def testPairsThatEqualSumArray():
     print pairsThatEqualSumArray([1, 3, 5, -5, 9, 4, 3, 2, 11, 1, 3, 5, -5, 9, 4, 3, 2, 11], 6)
+    print pairsThatEqualSumArray([], 1)
+
 
 def main():
-    # testIsStringPermutation()
-    testPairsThatEqualSumArray()
+    testIsStringPermutation()
+    # testPairsThatEqualSumArray()
 
 
 if __name__ == '__main__':
