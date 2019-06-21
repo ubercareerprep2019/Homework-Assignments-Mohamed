@@ -1,11 +1,11 @@
 import copy
 import random
-from arraysAndStrings import isStringPermutation, pairsThatEqualSumArray
+from Part2 import isStringPermutation, pairsThatEqualSumArray
 # returns random string of length size
 def randomInput(size):
     list = ['-1'] * size
     for i in range(len(list)):
-        list[i] = chr(random.randint(97, 122))
+        list[i] = chr(random.randint(50, 122))
     return list
 
 # returns permuted string s
@@ -55,7 +55,8 @@ def testPairsThatEqualSumArray():
 
 def main():
     testIsStringPermutation()
-    # testPairsThatEqualSumArray()
+    testPairsThatEqualSumArray()
+
 
 
 if __name__ == '__main__':
